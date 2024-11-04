@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "llm-agent-server"
 version = "0.1.0"
-description = "An LLM-based agent server for file system operations"
-authors = ["Your Name <your.email@example.com>"]
+description = "Another Agent"
+authors = ["lptlkw@gmail.com"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
