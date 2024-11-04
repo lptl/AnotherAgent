@@ -27,7 +27,7 @@ async def process_agent_request(request: AgentRequest) -> AgentResponse:
         )
         return AgentResponse(msg=response["output"])
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 if __name__ == "__main__":
