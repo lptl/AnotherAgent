@@ -4,8 +4,6 @@ from pydantic import BaseModel
 
 from agent import create_agent_executor
 
-# Initialize FastAPI and handle request
-
 app = FastAPI()
 
 agent_executor = create_agent_executor()

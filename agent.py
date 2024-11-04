@@ -13,6 +13,7 @@ from tools import list_files, read_file, write_file, rename_file
 
 
 def load_api_key():
+    """load the google api key"""
     load_dotenv()
 
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -23,6 +24,7 @@ def load_api_key():
 
 
 def create_llm():
+    """create the llm for agent"""
     llm = ChatGoogleGenerativeAI(
         model="gemini-pro", temperature=0, convert_system_message_to_human=True
     )
@@ -30,7 +32,7 @@ def create_llm():
 
 
 def create_tools():
-    # Updated tools using StructuredTool
+    """define the available tools for the agent"""
     tools = [
         StructuredTool.from_function(
             func=list_files,
@@ -57,7 +59,7 @@ def create_tools():
 
 
 def create_agent_executor():
-    # Initialize agent with updated method
+    """create the agent executor"""
     load_api_key()
     tools = create_tools()
     llm = create_llm()
@@ -80,7 +82,9 @@ def create_agent_executor():
         ]
     )
 
-    agent = StructuredChatAgent.from_llm_and_tools(llm=llm, tools=tools, prompt=prompt)
+    agent = StructuredChatAgent.from_llm_and_tools(
+        llm=llm, tools=tools, prompt=prompt
+    )
 
     agent_executor = AgentExecutor.from_agent_and_tools(
         agent=agent,
